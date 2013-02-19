@@ -1,0 +1,43 @@
+<div id="side" class="span3">
+	<div class="me">
+		<div class="float_div">
+			<a href="/page/about" id="name">{{ site.configs.name }}</a>
+			<a id="wrap-face" href="/page/about"><img class="face-me" src="/t/img/face.png" alt=""></a>
+			<div class="grey">Contact me:</div>
+			{% if site.configs.twitter %}
+			<a href="{{ site.configs.twitter }}"><img title="twitter" src="/t/img/twitter.jpg" alt=""></a>
+			{% endif %}
+			{% if site.configs.github %}
+			<a href="{{ site.configs.github }}"><img title="github" src="/t/img/github.jpg" alt=""></a>
+			{% endif %}
+			{% if site.configs.email %}
+			<a href="#email" role="button" data-toggle="modal"><img title="email" src="/t/img/email.jpg" alt=""></a>
+			{% endif %}
+			<a href="/feed"><img title="rss" src="/t/img/rss.jpg" alt=""></a>
+		</div>
+		<div class="motto">
+		{{ site.configs.motto }}
+		</div>
+	</div>
+	{% if site.configs.email %}
+	<div id="email" class="modal hide fade" tabindex="-1" role="dialog">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">Email address:</h3>
+		</div>
+		<div class="modal-body">
+			<p>{{ site.configs.email }}</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		</div>
+	</div>
+	{% endif %}
+	<div class="column">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/page/category">Catagory</a></li>
+			<li><a href="/page/about">About</a></li>
+		</ul>
+	</div>
+</div>

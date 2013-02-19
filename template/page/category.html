@@ -1,0 +1,83 @@
+{% include "header.html" %}
+<div class="container">
+	<div class="span8" id="category">
+		<div id="inner-category">
+			<ul class="nav nav-tabs" id="myTab">
+			{% if request.args["type"] == "tag"%}
+				<li><a href="#time" data-toggle="tab">time</a></li>
+				<li class="active"><a href="#tags" data-toggle="tab">tags</a></li>
+			{% else %}
+				<li class="active"><a href="#time" data-toggle="tab">time</a></li>
+				<li><a href="#tags" data-toggle="tab">tags</a></li>
+			{% endif %}
+			</ul>
+			<div class="tab-content">
+			{% if request.args["type"] == "tag"%}
+			<div class="tab-pane" id="time">
+			{% else %}
+			<div class="tab-pane active" id="time">
+			{% endif %}
+				<div class="accordion" id="accordion2">
+				{% set folders = get_folders("/catalog") %}
+				{% for folder in folders %}
+					{% set posts = get_posts(folder.path) %}
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#{{ folder.title }}">
+								{{ folder.title }}
+							<span class="Filesnum">{{ posts | length }}</span>
+							</a>
+						</div>
+						<div id="{{ folder.title }}" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<ul>
+								{% for post in posts %}
+									<li><a href="{{post.url}}">{{ post.title }}<a></li>
+								{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+			{% if request.args["type"] == "tag"%}
+			<div class="tab-pane active" id="tags">
+			{% else %}
+			<div class="tab-pane" id="tags">
+			{% endif %}
+				<div class="accordion" id="accordion2">
+				{% set tags = dict(site.tags) | dictsort %}
+				{% for tag,count in tags %}
+					{% set posts = get_posts_by_tags(tag) %}
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#{{tag}}">
+								{{ tag }}
+							<span class="Filesnum">{{ count }}</span>
+							</a>
+						</div>
+						{% if request.args["tag"] == tag %}
+						<div id="{{ tag }}" class="accordion-body collapse in">
+						{% else %}
+						<div id="{{ tag }}" class="accordion-body collapse">
+						{% endif %}					
+							<div class="accordion-inner">
+								<ul>
+								{% for post in posts %}
+									<li><a href="{{post.url}}">{{ post.title }}<a></li>
+								{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	{% include "side.html" %}
+	<div id="push"></div>
+</div>
+{% include "footer.html" %}

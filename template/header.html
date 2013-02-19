@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en-us">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    	<title>{{ site.title }}</title>
+    	<link rel="icon" href="/t/img/favicon.ico" mce_href="/t/favicon.ico"type="image/x-icon">
+    	<link rel="shortcut icon" href="/t/img/favicon.ico" mce_href="/t/favicon.ico"type="image/x-icon">
+		<link rel="stylesheet" href="/t/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/t/css/bootstrap-responsive.min.css">
+		<link rel="stylesheet" href="/t/css/me.css">
+		<link rel="stylesheet" href="/t/css/blog.css">
+		<script src="/t/js/jquery-1.8.3.min.js"></script>
+		<script src="/t/js/bootstrap.min.js"></script>
+		<script src="/t/js/blog.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="container">
+				<div class="span8">
+					<a href="/" class="brand">{{ site.configs.site_name }}</a>
+				</div>
+				<form action="https://www.google.com/search" target="_blank" method="get">
+					<input name="ie" value="utf-8" type="hidden" />
+					<input name="sitesearch" value="{{ site.domain }}" type="hidden" />
+					<input name="q" type="text" maxlength="100" class="search" placeholder="search">
+				</form>
+			</div>
+		</div>

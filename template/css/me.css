@@ -1,0 +1,39 @@
+body{
+	background-color: #ffffff;
+}
+a{
+	text-decoration: none;
+}
+button a{
+	display: block;
+}
+.block{
+	display: block;
+}
+/*span or div to seperate */
+.sep{
+	display:block;
+	height:1px;
+}
+/*font size*/
+.big{
+	font-size: 18px;	
+}
+.small{
+	font-size: 12px;
+}
+/*font color*/
+.grey{
+	color:#bbb;
+}
+/*to get float's parents' height*/
+.float_div{
+	overflow: hidden;
+}
+.hidden{
+	display: none;
+}
+.space{
+	width:30px;
+	display:inline-block;
+}
